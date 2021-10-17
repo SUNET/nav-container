@@ -32,7 +32,7 @@ RUN mkdir /.cache && chmod 777 /.cache
 RUN mkdir /source
 WORKDIR /source
 ARG NAV_VERSION
-RUN git clone https://github.com/SUNET/nav.git nav --branch ${NAV_VERSION} --depth 1
+RUN git clone https://github.com/UNINETT/nav.git nav --branch ${NAV_VERSION} --depth 1
 RUN mkdir -p .wheels
 RUN pip3 wheel -w ./.wheels/ -r nav/requirements.txt
 RUN pip3 install --root="/source/.build" ./nav
@@ -98,6 +98,11 @@ RUN a2dissite 000-default; a2ensite nav-site
 
 # Run all NAV processes in one container by default
 CMD ["/usr/bin/supervisord", "-n"]
+
+# Install ARGUS glue service
+RUN git clone https://github.com/Uninett/nav-argus-glue.git /etc/nav-argus-glue
+WORKDIR /etc/nav-argus-glue
+RUN python3 /etc/nav-argus-glue/setup.py install
 
 # Final environment
 ENV    PATH /usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin
