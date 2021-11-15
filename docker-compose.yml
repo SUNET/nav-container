@@ -11,6 +11,7 @@ services:
     volumes:
       - logs:/var/log/nav:Z
       - roomimages:/var/lib/nav/uploads/images/rooms:Z
+      - $PWD/webfront.conf:/etc/nav/webfront/webfront.conf
     depends_on:
       - postgres
       - carbon-cache
