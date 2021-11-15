@@ -104,6 +104,9 @@ RUN git clone https://github.com/Uninett/nav-argus-glue.git /etc/nav-argus-glue
 WORKDIR /etc/nav-argus-glue
 RUN python3 /etc/nav-argus-glue/setup.py install
 
+#cleaner way to install the glue service
+#RUN pip install git+https://github.com/Uninett/nav-argus-glue
+
 # Final environment
 ENV    PATH /usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin
 ENV    ADMIN_MAIL root@localhost
