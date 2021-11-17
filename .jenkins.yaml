@@ -1,0 +1,19 @@
+disabled: false
+
+builders:
+    - docker
+
+environment_variables:
+    NAV_VERSION: "5.2.1"
+
+extra_jobs:
+    - name: nav-container-carbon-cache
+      builders:
+          - docker
+      docker_name: nav-container/carbon-cache
+      docker_context_dir: carbon-cache
+    - name: nav-container-graphite-web
+      builders:
+          - docker
+      docker_name: nav-container/graphite-web
+      docker_context_dir: graphite-web
