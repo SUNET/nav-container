@@ -31,7 +31,7 @@ RUN mkdir /.cache && chmod 777 /.cache
 
 RUN mkdir /source
 WORKDIR /source
-ARG NAV_VERSION
+ARG NAV_VERSION=5.2.1
 RUN git clone https://github.com/UNINETT/nav.git nav --branch ${NAV_VERSION} --depth 1
 RUN mkdir -p .wheels
 RUN pip3 wheel -w ./.wheels/ -r nav/requirements.txt
@@ -66,7 +66,7 @@ RUN wget  https://www.postgresql.org/media/keys/ACCC4CF8.asc -O /tmp/ACCC4CF8.as
 	&& rm /tmp/ACCC4CF8.asc
 
 
-ARG NAV_VERSION
+ARG NAV_VERSION=5.2.1
 LABEL maintainer="Morten Brekkevold <morten.brekkevold@uninett.no>"
 LABEL description="Network Administration Visualized ${NAV_VERSION}"
 

@@ -3,9 +3,6 @@ disabled: false
 builders:
     - docker
 
-environment_variables:
-    NAV_VERSION: "5.2.1"
-
 extra_jobs:
     - name: nav-container-carbon-cache
       builders:
