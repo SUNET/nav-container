@@ -2,6 +2,7 @@ disabled: false
 
 builders:
     - docker
+docker_name: nav-container
 
 extra_jobs:
     - name: nav-container-carbon-cache
